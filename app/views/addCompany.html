@@ -1,0 +1,122 @@
+
+<div class="container connectionPage animated fadeIn">
+  <div class="col-lg-12">
+    <div class="alert alert-danger" ng-show="erreurAddCompany">
+        <strong>Erreur lors de l'inscription de l'entreprise : </strong> {{messageErreurAddCompany}}
+      </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Inscription entreprise</div>
+      <div class="panel-body">
+        <form class="form-horizontal" name="form">
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="email">Email <span style="color:red">*</span></label>
+            <div class="col-sm-8 pull-right" >
+              <input type="email" ng-pattern="regexEmail" ng-model="company.mailUtilisateur" class="form-control" ng-maxlength="45" name="email" id="email" placeholder="Email" required novalidate>
+              <span style="color:red" ng-show="form.email.$touched && form.email.$invalid">
+                <p ng-show="form.email.$error.required">Email requis.</p>
+                <p ng-show="form.email.$error.pattern">Adresse email invalide.</p>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="nom">Nom <span style="color:red">*</span></label>
+            <div class="col-sm-8 pull-right" >
+              <input type="text" ng-model="company.nomUtilisateur"class="form-control" ng-minlength="3" ng-maxlength="45" name="nom"id="nom" placeholder="Nom" required>
+              <span style="color:red" ng-show="form.nom.$touched && form.nom.$invalid">
+                <p ng-show="form.nom.$error.required">Votre nom est requis.</p>
+                <p ng-show="form.nom.$invalid">Votre nom doit avoir au minimum 3 caractères.</p>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="prenom">Prénom <span style="color:red">*</span></label>
+            <div class="col-sm-8 pull-right" >
+              <input  type="text" ng-model="company.prenomUtilisateur"class="form-control" ng-minlength="3" ng-maxlength="45" name="prenom" id="prenom" placeholder="Prénom" required>
+              <span style="color:red" ng-show="form.prenom.$touched && form.prenom.$invalid">
+                <p ng-show="form.prenom.$error.required">Votre prénom est requis.</p>
+                <p ng-show="form.prenom.$invalid">Votre prénom doit avoir au minimum 3 caractères.</p>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="pwd">Mot de passe <span style="color:red">*</span></label>
+            <div class="col-sm-8 pull-right" >
+              <input type="password" ng-model="company.mdpUtilisateur" class="form-control" ng-minlength="4" ng-maxlength="20" name="pwd" id="pwd" placeholder="Mot de passe entre 4 et 20 caractères" required>
+              <span style="color:red" ng-show="form.pwd.$touched && form.pwd.$invalid">
+                <p ng-show="form.pwd.$error.required">Votre mot de passe est requis.</p>
+                <p ng-show="form.pwd.$invalid">Votre mot de passe doit être compris entre 4 et 20 caractères.</p>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="pwdConfirm">Confirmer mot de passe <span style="color:red">*</span></label>
+            <div class="col-sm-8 pull-right" >
+              <input type="password" ng-model="company.confirmationDePasse" class="form-control" ng-minlength="4" ng-maxlength="20" name="pwdConfirm" id="pwdConfirm" placeholder="Confirmer mot de passe entre 4 et 20 caractères" required>
+              <span style="color:red" ng-show="form.pwdConfirm.$touched && form.pwdConfirm.$invalid">
+                <p ng-show="form.pwdConfirm.$error.required">Votre mot de passe est requis.</p>
+                <p ng-show="form.pwdConfirm.$invalid">Votre mot de passe doit être compris entre 4 et 20 caractères.</p>
+              </span>
+              <span style="color:red" ng-show="form.pwdConfirm.$touched && form.pwdConfirm.$valid">
+                <p ng-show="!comparePasswords()">Vos mots de passes sont différents.</p>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group text-center">
+            <label class="col-md-12" for="">Création d'une entreprise</label>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="nomEntreprise">Nom Entreprise <span style="color:red">*</span></label>
+            <div class="col-sm-8 pull-right" >
+              <input type="text" ng-model="company.nomEntreprise"class="form-control" ng-minlength="3" ng-maxlength="45" name="nomEntreprise"id="nomEntreprise" placeholder="Nom Entreprise" required>
+              <span style="color:red" ng-show="form.nomEntreprise.$touched && form.nomEntreprise.$invalid">
+                <p ng-show="form.nomEntreprise.$error.required">Le nom de votre entreprise est requis.</p>
+                <p ng-show="form.nomEntreprise.$invalid">Le nom de votre entreprise doit avoir au minimum 3 caractères.</p>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="company">Numéro de téléphone</label>
+            <div class="col-sm-8 pull-right" >
+              <input type="text" ng-model="company.telephone" class="form-control" name="telephone" id="telephone" placeholder="Numéro de téléphone" >
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <label class="col-md-12" for="">Entrez l'adresse</label>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="company">Adresse</label>
+            <div class="col-sm-8 pull-right" >
+              <input type="text" ng-model="company.adresse1" class="form-control" name="adresse1" id="adresse1" placeholder="Adresse" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="company">Complément d'adresse</label>
+            <div class="col-sm-8 pull-right" >
+              <input type="text" ng-model="company.adresse2" class="form-control" name="adresse2" id="adresse2" placeholder="Complément Adresse" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="company">Code Postal</label>
+            <div class="col-sm-8 pull-right" >
+              <input type="text" ng-model="company.codePostal" class="form-control" name="codePostal" id="codePostal" placeholder="Code Postal" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="company">Ville</label>
+            <div class="col-sm-8 pull-right" >
+              <input type="text" ng-model="company.ville" class="form-control" name="ville" id="ville" placeholder="Ville" >
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-primary" ng-click="addCompany()"
+                ng-disabled="form.nom.$invalid || form.prenom.$invalid || form.email.$invalid || form.pwd.$invalid || form.pwdConfirm.$invalid || !comparePasswords() || form.nomEntreprise.$invalid">Inscription</button>
+          </div>
+          <div>
+            <font color="red">* : champs obligatoire</font> 
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

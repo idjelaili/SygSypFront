@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="col-lg-12 center-block">
+    <h1>Charger un questionnaire<h1>
+  </div>
+  <div class="col-lg-12">
+    <form class="form-group">
+      <div class="form-group center-block">
+        <label for="exampleInputFile" >Fichier CSV</label>
+        <input type="file" class="form-control" xlsx-model="excel"  multiple/>
+      </div>
+      <button ng-click="envoyerQuestionnaire()" class="btn btn-primary">Envoyer</button>
+    </form>
+  </div>
+  <div class="col-lg-12">
+    <hr>
+  </div>
+  <div class="col-lg-12">
+    <table class="table table-striped">
+      <thead>
+        <tr class="info">
+          <th>Questionnaire</th>
+          <th>Libellé</th>
+          <th>Défaut</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr ng-repeat = "questionnaire in questionnaires | orderBy : 'id'">
+             <td>{{ questionnaire.idQuestionnaire }}</td>
+             <td>{{ questionnaire.libelleQuestionnaire }}</td>
+             <td>
+              <label>
+                  <input type="radio" ng-model="testId" value="{{questionnaire.idQuestionnaire}}" ng-change="defaultQuestionnaire(questionnaire, questionnaire.idQuestionnaire)">
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

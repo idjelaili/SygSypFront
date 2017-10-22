@@ -1,0 +1,15 @@
+.panel-default > .panel-heading {
+    color: #fff;
+    background-color: #337ab7 !important;
+    border-color: #337ab7;
+}
+table, th {
+  text-align: center;
+}
+
+.reduc {
+  padding-top: 5px !important;
+  padding-bottom: 0px !important;
+  margin-top: 5px !important;
+  margin-bottom : 5px !important;
+}

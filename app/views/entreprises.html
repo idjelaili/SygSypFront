@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <!-- ADD ENTREPRISE TO CONSULTANT -->
+    <div class="col-lg-12">
+      <div class="col-md-3">
+        <h4><strong>Entreprise</strong></h4>
+      </div>
+      <div class="col-md-6">
+        <select class="form-control" name="repeatSelect" id="entreprise" ng-model="entreprise.nomEntreprise">
+          <option ng-repeat="option in entreprises" value="{{option.nomEntreprise}}"> {{option.nomEntreprise}}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary" ng-click="attribuerEntreprise()">M'attribuer l'entreprise</button>
+      </div>
+    </div>
+    <!-- LINE SEPARATOR -->
+    <div class="col-lg-12">
+      <hr>
+    </div>
+
+    <!-- PANEL ENTREPRISE  -->
+      <div class="col-lg-12" >
+        <div class="alert alert-info" ng-show="aucuneEntreprise">
+          <strong>Aucune entreprise associée</strong>
+        </div>
+        <uib-accordion close-others="oneAtATime">
+          <div class="col-lg-12" ng-repeat="company in companies">
+            <div uib-accordion-group class="panel-default" is-open="status.open" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+              <uib-accordion-heading>
+                {{company.nomEntreprise}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+              </uib-accordion-heading>
+              <div class="col-md-6">
+                <p class="text-left">
+                  {{company.nomUtilisateur}} {{company.prenomUtilisateur}} <br/>
+                  {{company.telephone}} <br/>
+                  {{company.mailUtilisateur}} <br/>
+                  {{company.adresse1}} {{company.adresse2}} {{company.codePostal}} {{company.ville}} <br/>
+                </p>
+              </div>
+              <div class="col-md-6 pull-right">
+                  <p>
+                    Code entreprise : {{company.code}} </br>
+                  </p>
+                  <p>
+                    Questionnaire :
+                    <select class="form-control " name="repeatSelect" ng-change="affecterQuestionnaire($index, company.activeQuestionnaire)" ng-options="v.libelleQuestionnaire for v in company.questionnaires" ng-model="company.activeQuestionnaire">
+                      <!--<option value="{id: 'NULL', libelleQuestionnaire: 'defaultSurvey'}" >Questionnaire par défaut</option>-->
+                      <!--<option ng-repeat="option in company.questionnaires track by $index" value="{{option.idQuestionnaire}}">{{option.libelleQuestionnaire}}</option>-->
+                    </select>
+              </div>
+              <div class="col-md-3 pull-right">
+                  <button class="btn btn-warning" ng-show="changeComment" ng-click="updateComment(company.resultsEntreprise)">Mettre à jour commentaire</button>
+              </div>
+              <!-- TABLE RESULT ENTREPRISE -->
+              <div class="col-lg-12">
+                <table class="table table-striped ">
+                  <thead>
+                    <tr class="info">
+                      <th>Utilisateur</th>
+                      <th>Test</th>
+                      <th>Date</th>
+                      <th>Résultat</th>
+                      <th>CSV</th>
+                      <th>Commentaire collaborateur</th>
+                      <th>Commentaire consultant</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      <tr ng-repeat = "result in company.resultsEntreprise">
+                         <th scope="row">{{ result.nomUtilisateur }} {{ result.prenomUtilisateur }}</th>
+                         <td>{{ result.libelleQuestionnaire }}</td>
+                         <td>{{ result.dateTest }}</td>
+                         <td><button href="" ng-click="generatePDF(result.idTest, company.nomEntreprise);">Visualiser PDF</button></td>
+                        <td><button type="button" ng-csv="getArray(result.idTest, company.nomEntreprise)" charset="utf-8" add-bom="true" field-separator=";" filename="SYG_{{company.nomEntreprise}}_{{result.nomUtilisateur}}-{{result.prenomUtilisateur}}_{{ result.dateTest }}.csv">Exporter en CSV</button></td>
+                         <td><textarea class="form-control" rows="3" name="commentaireUtilisateur" ng-model="result.commentaireUtilisateur" value="{{result.commentaireUtilisateur}}" disabled></textarea></td>
+                         <td><textarea class="form-control" rows="3" name="commentaireConsultant" ng-model="result.commentaireConsultant" value="{{result.commentaireConsultant}}" ng-change="modifComment()"></textarea></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="alert alert-info" ng-if="company.aucunResultEntreprise">
+                    <strong>Il n'y a aucun résultat pour cette entreprise ! </strong>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </uib-accordion>
+      </div>
+    </div>
+  </div>

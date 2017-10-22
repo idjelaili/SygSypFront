@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Secure your growth</title>
+    <meta name="description" content="Vous avez réussi à développer votre entreprise mais aujourd’hui la donne a changé et impose de reconsidérer vos choix et votre stratégie afin de pérenniser votre activité">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css" />
+    <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css" />
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/question.css">
+    <link rel="stylesheet" href="styles/connection.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/animate.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/mentions.css">
+    <link rel="stylesheet" href="styles/entreprise.css">
+    <link rel="stylesheet" href="styles/parameter.css">
+    <link rel="stylesheet" href="styles/result.css">
+    <link rel="stylesheet" href="styles/chartPDF.css">
+
+    <!--About ressource-->
+  <!-- endbuild -->
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Hind|Muli|Noto+Sans|Poppins|Rubik|Yanone+Kaffeesatz" rel="stylesheet">
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300">
+  <link rel="icon" type="image/png" href="images/syg.png" />
+
+</head>
+<body ng-app="sigSipApp">
+  <!--[if lte IE 8]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <div ui-view="menu"></div>
+  <div ui-view="bodyContent" class="bodyContent"></div>
+
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+  !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+    r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+  }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+  </script>
+
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+  <script src="bower_components/angular-recaptcha/release/angular-recaptcha.js"></script>
+  <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
+  <script src="bower_components/qrcode-generator/js/qrcode.js"></script>
+  <script src="bower_components/qrcode-generator/js/qrcode_UTF8.js"></script>
+  <script src="bower_components/angular-qrcode/angular-qrcode.js"></script>
+  <script src="bower_components/angular-upload/angular-upload.js"></script>
+  <script src="bower_components/angular-filter/dist/angular-filter.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/jspdf/dist/jspdf.debug.js"></script>
+  <script src="bower_components/angular-base64/angular-base64.js"></script>
+  <script src="bower_components/rangy/rangy-core.js"></script>
+  <script src="bower_components/rangy/rangy-classapplier.js"></script>
+  <script src="bower_components/rangy/rangy-highlighter.js"></script>
+  <script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+  <script src="bower_components/rangy/rangy-serializer.js"></script>
+  <script src="bower_components/rangy/rangy-textrange.js"></script>
+  <script src="bower_components/textAngular/dist/textAngular.js"></script>
+  <script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+  <script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
+  <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
+  <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <script src="bower_components/highcharts/highcharts.js"></script>
+  <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+  <script src="bower_components/js-xlsx/dist/xlsx.core.min.js"></script>
+  <script src="bower_components/xlsx-model/xlsx-model.js"></script>
+  <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+  <script src="bower_components/flow.js/dist/flow.js"></script>
+  <script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+  <script src="bower_components/angular-base64-upload/src/angular-base64-upload.js"></script>
+  <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+  <script src="bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <!-- Usemin block -->
+
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/html2canvas.js"></script>
+  <script src="scripts/canvas2image.js"></script>
+  <script src="scripts/controllers/config.js"></script>
+  <script src="scripts/controllers/connection.js"></script>
+  <script src="scripts/controllers/inscription.js"></script>
+  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/menu.js"></script>
+  <script src="scripts/controllers/question.js"></script>
+  <script src="scripts/controllers/parameters.js"></script>
+  <script src="scripts/controllers/parametersConsultant.js"></script>
+  <script src="scripts/controllers/result.js"></script>
+  <script src="scripts/controllers/resultsCompany.js"></script>
+  <script src="scripts/controllers/uploadSurvey.js"></script>
+  <script src="scripts/controllers/addCompany.js"></script>
+  <script src="scripts/controllers/resultsConsultant.js"></script>
+  <script src="scripts/controllers/consultant.js"></script>
+  <script src="scripts/controllers/entreprises.js"></script>
+  <script src="scripts/controllers/chartPDF.js"></script>
+  <script src="scripts/controllers/testsCollaborateurs.js"></script>
+
+  <script src="scripts/controllers/services/resultService.js"></script>
+  <script src="scripts/controllers/services/userService.js"></script>
+  <script src="scripts/controllers/services/parameterService.js"></script>
+  <script src="scripts/controllers/services/questionService.js"></script>
+  <script src="scripts/controllers/services/interceptor.js"></script>
+  <script src="scripts/controllers/services/entrepriseService.js"></script>
+  <script src="scripts/controllers/services/uploadSurveyService.js"></script>
+
+  <!-- endbuild -->
+  </html>

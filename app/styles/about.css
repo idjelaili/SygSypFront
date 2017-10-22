@@ -1,0 +1,73 @@
+.blue {
+    color: #176fc1;
+}
+
+.bluesky {
+    color: #00adef !important;
+}
+
+.img{
+  height: 75%;
+  width: 75%;
+}
+
+.footer a {
+  color: #fff !important;
+}
+
+.contact a {
+  color: #fff !important;
+}
+
+.contact h1 {
+  color: #fff !important;
+}
+
+.contact {
+  background: #00adef !important;
+}
+
+.footer {
+  background: #00adef !important;
+}
+
+.contact img {
+  margin-top: -10px;
+}
+
+img {
+    max-width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+h1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.about .container {
+    max-width: 830px;
+}
+
+.container-fluide.blueF{
+    background: #2568a6;
+    color: white;
+}
+
+.container-fluide.blueM{
+    background: #176fc1;
+}
+
+.container-fluide.blueC{
+    background: #00adef;
+}
+
+.vertical-center-div {
+  padding-top: 35px;
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  /*min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}

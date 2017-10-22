@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Personnalisation du header et du footer du PDF</div>
+
+      <div class="panel-body" >
+        <form class="form-horizontal" name="consultantForm">
+          <h4 class="text-center">Ajouter une image pour le header du PDF</h4>
+          <div class="col-lg-12 center-block">
+            <div class="col-lg-6">
+              <form class="form-group" enctype="multipart/form-data">
+                <div class="form-group center-block">
+                  <label for="consultantParams.header" >Logo entreprise</label>
+                    <input type="file" name="file" id="img" ng-model="myfile" base-sixty-four-input/>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-6">
+              <img ng-if="imageConsultant != null" ng-src="images/logosHeaders/{{imageConsultant}}" class="center-block img" alt="image consultant"/>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <hr>
+          </div>
+          <h4 class="text-center">Ajouter un footer pour le PDF</h4>
+          <div text-angular ng-model="consultantParams.footer"></div>
+        </form>
+        <div class="form-group text-center">
+          <button class="btn btn-primary" ng-click="updateConsultant()">Enregistrer</button>
+        </div>
+        <div class="alert alert-danger" ng-show="imageTropGrosse">
+          <strong>Taille de l'image trop grande :</strong> Taille limitée à 150 Ko
+        </div>
+        <div class="alert alert-success" ng-show="successChanged">
+          <strong>Mise à jour effectuée.</strong>
+        </div>
+        <div class="alert alert-danger" ng-show="errorOccurs">
+          <strong>Erreur lors de la mise à jour.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

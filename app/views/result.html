@@ -1,0 +1,38 @@
+<div class="container">
+  <div ng-show="show.error" class="alert alert-danger alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div>
+  <div class="col-lg-12 center-block">
+    <h1 class="titleResult">Mes résultats<h1>
+  </div>
+  <div class="col-md-3 pull-right">
+      <button class="btn btn-warning" ng-show="changeComment" ng-click="updateComment(results)">Mettre à jour commentaire</button>
+  </div>
+  <div class="col-lg-12">
+    <table class="table table-striped">
+      <thead>
+        <tr class="info">
+          <th>Référence Test</th>
+          <th>Date</th>
+          <th>Résultat</th>
+          <th>Commentaire collaborateur</th>
+          <th>Commentaire consultant</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr ng-repeat = "result in results" ng-hide="aucunResult">
+             <td>{{ result.libelleQuestionnaire }}</td>
+             <td>{{ result.dateTest }}</td>
+             <!-- <td><a href="" >Résultats PDF</a></td> -->
+              <td><button href="" ng-click="generatePDF(result.idTest)">Visualiser PDF</button></td>
+             <td><textarea class="form-control" rows="3" name="commentaireUtilisateur" ng-model="result.commentaireUtilisateur" value="{{result.commentaireUtilisateur}}" ng-change="modifComment()"></textarea></td>
+             <td><textarea class="form-control" rows="3" name="commentaireConsultant" ng-model="result.commentaireConsultant" value="{{result.commentaireConsultant}}" disabled></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert alert-danger" ng-show="aucunResult">
+        <strong>{{messageAucunResult}}</strong>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,49 @@
+<div class="container connectionPage " >
+
+  <div class="alert alert-danger" ng-show="erreurConnexion">
+    <strong>Erreur connexion : </strong> {{message}}
+  </div>
+  <div class="alert alert-danger" ng-show="erreurMdpLong">
+    <strong>Erreur : </strong> Le mot de passe doit contenir entre 4 et 20 caractères !
+  </div>
+  <div class="row animated slideInUp">
+    <h1 class="title text-center"> Evaluer les forces de votre entreprise </h1></br>
+    <div class="col-md-offset-2 col-md-8">
+        <div class="panel panel-primary ">
+        <div class="panel-heading">Connexion</div>
+          <div class="panel-body">
+
+            <form class="col-md-12" name="connectionForm">
+              <div class="form-group"  ng-class="{ 'has-error': connectionForm.email.$invalid && !connectionForm.email.$pristine}">
+                <label  class="col-md-6" for="exampleInputEmail1"><span class="glyphicon glyphicon-user"></span> Identifiant</label>
+                <div class="form-group">
+                  <input type="email" autocomplete="new-password" ng-model="dataConnection.email" class="form-control" ng-maxlength="45" name="email" id="Email" placeholder="Email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label  class="col-md-6" for="pwd"><span class="glyphicon glyphicon-lock"></span> Mot de passe</label>
+                <div class="form-group text-center"  ng-class="{ 'has-error': connectionForm.pwd.$invalid && !connectionForm.pwd.$pristine}">
+                  <input type="password" autocomplete="new-password" ng-model="dataConnection.pwd"class="form-control" ng-minlength="4" ng-maxlength="20" name="pwd" id="pwd" placeholder="Mot de passe" required>
+               </div>
+              </div>
+              <div class="form-group text-center">
+                <button class="btn btn-primary " ng-click="connect()">Connexion</button></br></br>
+              </div>
+              </form>
+              <div class="row">
+              <div class="form-group text-center" class="col-md-12">
+                <div class="row">
+                  <div class="col-md-3 pull-left">
+                    <a href="" ui-sref="inscription">S'inscrire</a>
+                  </div>
+                  <div class="col-md-5 pull-right">
+                      <a href="" ui-sref="reinitMdp">Mot de passe oublié </a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

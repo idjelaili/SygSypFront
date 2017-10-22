@@ -1,0 +1,169 @@
+<div class="container-fluid">
+  <div class="alert-danger" ng-show="erreurPWD">
+    <strong>Les mots de passe sont différents</strong>
+  </div>
+
+  <div class="alert alert-danger" ng-show="erreurPWDsame">
+    <strong>Le nouveau mot de passe est le même que l'ancien</strong>
+  </div>
+
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Paramètres</div>
+
+      <div class="panel-body" >
+       <form class="form-horizontal" name="parameterGestForm">
+
+
+      <div class="row">
+        <div class="col-md-6 pull-left form-group">
+        <div class="col-md-4 pull-left">
+           <label for="nom">Nom:</label>
+         </div>
+         <div class="col-md-8 pull-right" ng-class="{ 'has-error': parameterGestForm.nom.$invalid && !parameterGestForm.nom.$pristine }">
+           <input type="text" ng-model="parameterGest.nom"class="form-control" id="nom" placeholder="Nom" name="nom" required>
+          </div>
+        </div>
+
+        <div class="col-md-6 pull-right form-group">
+          <div class="col-md-4 pull-left">
+            <label for="text">Ancien mot de passe:</label>
+          </div>
+          <div class="col-md-8 pull-right">
+            <input type="password" ng-model="parameterGests.oldpwd"class="form-control" id="oldpwd" placeholder="Ancien Mot de passe" required>
+          </div>
+         </div>
+
+       </div>
+
+       <div class="row">
+
+         <div class="col-md-6 pull-left form-group">
+          <div class="col-md-4 pull-left">
+            <label for="prenom">Prénom:</label>
+          </div>
+          <div class="col-md-8 pull-right" ng-class="{ 'has-error': parameterGestForm.prenom.$invalid && !parameterGestForm.prenom.$pristine }">
+            <input type="text" ng-model="parameterGest.prenom"class="form-control" id="prenom" placeholder="Prénom" name="prenom" required>
+           </div>
+         </div>
+
+         <div class="col-md-6 pull-right form-group">
+           <div class="col-md-4 pull-left">
+             <label for="oldpwd">Nouveau mot de passe:</label>
+           </div>
+           <div class="col-md-8 pull-right">
+             <input type="password" ng-model="parameterGest.newpwd"class="form-control" id="newpwd" placeholder="Nouveau Mot de passe">
+           </div>
+        </div>
+
+      </div>
+
+        <div class="row">
+
+          <div class="col-md-6 pull-left form-group" >
+           <div class="col-md-4 pull-left">
+             <label for="mail">Email:</label>
+           </div>
+           <div class="col-md-8 pull-right" ng-class="{ 'has-error': parameterGestForm.email.$invalid && !parameterGestForm.email.$pristine }">
+             <input type="email" ng-model="parameterGest.email"class="form-control" id="email" name="email" placeholder="Email" required>
+            </div>
+          </div>
+
+          <div class="col-md-6 pull-right form-group">
+            <div class="col-md-4 pull-left">
+              <label for="pwdConfirm">Confirmation mot de passe:</label>
+            </div>
+            <div class="col-md-8 pull-right">
+              <input type="password" ng-model="parameterGest.pwdConfirm"class="form-control" id="pwdconfirm" placeholder="Confirmez votre mot de passe">
+            </div>
+           </div>
+
+       </div>
+
+
+
+<!-- 2eme blok -->
+
+<hr></br>
+
+
+       <div class="row">
+         <div class="col-md-6 pull-left form-group">
+         <div class="col-md-4 pull-left">
+            <label for="nom">Nom Entreprise:</label>
+          </div>
+          <div class="col-md-8 pull-right">
+            <input type="text" ng-model="parameterGest.entreprise"class="form-control" id="entreprise" placeholder="Entreprise" name="entreprise" required>
+           </div>
+         </div>
+
+         <div class="col-md-6 pull-right form-group">
+           <div class="col-md-4 pull-left">
+             <label for="text">Adresse:</label>
+           </div>
+           <div class="col-md-8 pull-right">
+             <input type="text" ng-model="parameterGest.oldpwd"class="form-control" id="adresse" placeholder="Adresse" name="adresse" required>
+           </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 pull-left form-group">
+           <div class="col-md-4 pull-left">
+             <label for="prenom">Code entreprise:</label>
+           </div>
+           <div class="col-md-8 pull-right">
+             <input type="text" ng-model="parameterGest.codeentreprise"class="form-control" id="codeentreprise" placeholder="Code de l'entreprise" name="codeentreprise" required>
+            </div>
+          </div>
+
+          <div class="col-md-6 pull-right form-group">
+            <div class="col-md-4 pull-left">
+              <label for="oldpwd">Code postal:</label>
+            </div>
+            <div class="col-md-8 pull-right">
+              <input type="text" ng-model="parameterGest.codepostal"class="form-control" id="codepostal" placeholder="Code postal">
+            </div>
+         </div>
+
+       </div>
+
+         <div class="row">
+
+           <div class="col-md-6 pull-left form-group" >
+            <div class="col-md-4 pull-left">
+              <label for="mail">Téléphone:</label>
+            </div>
+            <div class="col-md-8 pull-right" ng-class="{ 'has-error': parameterGestForm.email.$invalid && !parameterGestForm.email.$pristine }">
+              <input type="text" ng-model="parameterGest.tel" class="form-control" id="tel" name="tel" placeholder="Téléphone" required>
+             </div>
+           </div>
+
+           <div class="col-md-6 pull-right form-group">
+             <div class="col-md-4 pull-left">
+               <label for="pwdConfirm">Ville:</label>
+             </div>
+             <div class="col-md-8 pull-right">
+               <input type="password" ng-model="parameterGest.ville"class="form-control" id="ville" placeholder="Ville">
+             </div>
+            </div>
+
+        </div>
+
+
+
+
+
+       <div class="form-group text-center">
+         <button class="btn btn-primary" ng-click="subscribe()">Enregistrer</button>
+       </div>
+
+
+     </form>
+
+
+    </div>
+  </div>
+</div>

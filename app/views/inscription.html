@@ -1,0 +1,108 @@
+
+<div class="container connectionPage animated fadeIn">
+  <div class="row ">
+    <div class="col-md-offset-3 col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Inscription</div>
+        <div class="panel-body">
+          <form name="form" novalidate>
+            <!-- Début des inputs -->
+            <div class="form-group">
+              <label for="email">Email <span style="color:red">*</span></label>
+              <input type="email" ng-pattern="regexEmail"ng-model="inscription.mailUtilisateur" class="form-control" ng-maxlength="45" name="email" id="email" placeholder="Email" required novalidate>
+              <span style="color:red" ng-show="form.email.$touched && form.email.$invalid">
+                <p ng-show="form.email.$error.required">Email requis.</p>
+                <p ng-show="form.email.$error.pattern">Adresse email invalide.</p>
+              </span>
+            </div>
+            <div class="form-group">
+              <label  for="nom">Nom <span style="color:red">*</span></label>
+              <input type="text" ng-model="inscription.nomUtilisateur"class="form-control" ng-minlength="3" ng-maxlength="45" name="nom"id="nom" placeholder="Nom" required novalidate>
+              <span style="color:red" ng-show="form.nom.$touched && form.nom.$invalid">
+                <p ng-show="form.nom.$error.required">Votre nom est requis.</p>
+                <p ng-show="form.nom.$invalid">Votre nom doit avoir au minimum 3 caractères.</p>
+              </span>
+            </div>
+            <div class="form-group">
+              <label  for="prenom">Prénom <span style="color:red">*</span></label>
+              <input  type="text" ng-model="inscription.prenomUtilisateur"class="form-control" ng-minlength="3" ng-maxlength="45" name="prenom" id="prenom" placeholder="Prénom" required novalidate>
+              <span style="color:red" ng-show="form.prenom.$touched && form.prenom.$invalid">
+                <p ng-show="form.prenom.$error.required">Votre prénom est requis.</p>
+                <p ng-show="form.prenom.$invalid">Votre prénom doit avoir au minimum 3 caractères.</p>
+              </span>
+            </div>
+            <div class="form-group">
+              <label  for="pwd">Mot de passe <span style="color:red">*</span></label>
+              <input type="password" ng-model="inscription.mdpUtilisateur" class="form-control" ng-minlength="4" ng-maxlength="20" name="pwd" id="pwd" placeholder="Mot de passe entre 4 et 20 caractères" required novalidate>
+              <span style="color:red" ng-show="form.pwd.$touched && form.pwd.$invalid">
+                <p ng-show="form.pwd.$error.required">Votre mot de passe est requis.</p>
+                <p ng-show="form.pwd.$invalid">Votre mot de passe doit être compris entre 4 et 20 caractères.</p>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="pwdConfirm">Confirmer mot de passe <span style="color:red">*</span></label>
+              <input type="password" ng-model="inscription.confirmationDePasse" class="form-control" ng-minlength="4" ng-maxlength="20" name="pwdConfirm" id="pwdConfirm" placeholder="Confirmer mot de passe entre 4 et 20 caractères" required >
+              <span style="color:red" ng-show="form.pwdConfirm.$touched && form.pwdConfirm.$invalid">
+                <p ng-show="form.pwdConfirm.$error.required">Votre mot de passe est requis.</p>
+                <p ng-show="form.pwdConfirm.$invalid">Votre mot de passe doit être compris entre 4 et 20 caractères.</p>
+              </span>
+              <span style="color:red" ng-show="form.pwdConfirm.$touched && form.pwdConfirm.$valid">
+                <p ng-show="!comparePasswords()">Vos mots de passes sont différents.</p>
+              </span>
+            </div>
+            <div class="checkbox">
+                <input bs-switch ng-model="isDirigeant"  type="checkbox" switch-animate="true"
+                switch-on-text="Dirigeant" switch-off-text="Associé" ng-change="resetFormsOnSwitch()"/>
+                <p class="help-block" ng-show="isDirigeant">Mon entreprise n'est pas enregistrée</p>
+                <p class="help-block" ng-show="!isDirigeant">Mon entreprise est enregistrée, je souhaite ajouter un compte utilisateur</p>
+            </div>
+            <div class="form-group" ng-show="isDirigeant">
+              <div class="row">
+                <div class="col-md-8" >
+                  <label for="consultant">Choisissez votre consultant</label>
+                  <select class="form-control" name="mySelect" id="mySelect" ng-change="changingConsultant()"
+                  ng-options="option.libelleSelect for option in consultantList track by option.mailUtilisateur"
+                  ng-model="selectedConsultant"></select>
+                </div>
+                <div class="col-md-4">
+                  <img ng-if="imageConsultant != null" ng-src="images/logosHeaders/{{imageConsultant}}" width="120px" alt="image consultant"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" ng-show="isDirigeant">
+              <label for="company">Nom Entreprise <span style="color:red">*</span></label>
+              <input type="text" ng-model="inscription.nomEntreprise" class="form-control" ng-maxlength="45" name="company" id="company" placeholder="Nom entreprise" required >
+              <span style="color:red" ng-show="form.company.$touched && form.company.$invalid">
+                <p ng-show="form.company.$error.required">Votre nom d'entreprise est requis.</p>
+              </span>
+            </div>
+            <div class="form-group" ng-show="!isDirigeant">
+              <label for="codeCompany">Code entreprise <span style="color:red">*</span></label>
+              <input type="text" ng-model="inscription.code" class="form-control" ng-maxlength="17" name="codeCompany" id="code" placeholder="Code 17 caractères" required novalidate>
+              <span style="color:red" ng-show="!isDirigeant && form.codeCompany.$touched && form.codeCompany.$invalid">
+                <p ng-show="form.codeCompany.$error.required">Votre code d'entreprise est requis.</p>
+              </span>
+            </div>
+            <div class="form-group" >
+              <div vc-recaptcha ng-model="gRecaptchaResponse" key="'6LeFhBUUAAAAADQ7yHNLe3Vzfk5Xd-EngBM8FUSQ'" required></div>
+            </div>
+            <div class="row">
+              <div class="col-md-offset-4 col-md-4" >
+                <button class="btn btn-primary btn-lg" ng-click="subscribe()"
+                ng-disabled="form.nom.$invalid || form.prenom.$invalid || form.email.$invalid || form.pwd.$invalid || form.pwdConfirm.$invalid || !comparePasswords() || (isDirigeant && form.company.$invalid) || (!isDirigeant && form.codeCompany.$invalid)">Inscription</button>
+              </div>
+              <div class="col-md-6">
+                <br/>
+                <p> <span style="color:red">(*)</span> Les champs sont obligatoires </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-offset-3 col-md-6">
+      <div class="alert alert-danger" ng-show="messageErrorInscription">
+        <strong>Erreur inscription :</strong> {{messageErrorInscription}}
+      </div>
+    </div>
+  </div>
+</div>

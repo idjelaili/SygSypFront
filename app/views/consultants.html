@@ -1,0 +1,109 @@
+
+<div class="container">
+
+  <div class="alert alert-danger" ng-show="erreurPWD">
+    <strong>Les mots de passe sont différents</strong>
+  </div>
+
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Ajouter un consultant</div>
+      <div class="panel-body">
+        <form class="form-horizontal" name="consultantForm">
+          <div class="form-group">
+            <div class="pull-left col-md-4">
+              <label class="control-label pull-left" for="email">Email</label>
+            </div>
+            <div class="col-sm-8 pull-right"  ng-class="{ 'has-error' : consultantForm.mailUtilisateur.$invalid && !consultantForm.mailUtilisateur.$pristine }">
+              <input type="email" ng-model="consultant.mailUtilisateur"class="form-control" name="email" id="email" placeholder="Email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="pull-left col-md-4">
+              <label class="control-label" ng-minlength="1" for="nom">Nom</label>
+            </div>
+            <div class="col-sm-8 pull-right" ng-class="{ 'has-error': consultantForm.nomUtilisateur.$invalid && !consultantForm.nomUtilisateur.$pristine}">
+              <input type="text" ng-model="consultant.nomUtilisateur"class="form-control" name="nom"id="nom" placeholder="Nom" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="pull-left col-md-4">
+              <label class="control-label" for="prenom">Prénom</label>
+            </div>
+            <div class="col-sm-8 pull-right" ng-class="{ 'has-error': consultantForm.prenomUtilisateur.$invalid && !consultantForm.prenomUtilisateur.$pristine}">
+              <input  type="text" ng-model="consultant.prenomUtilisateur"class="form-control" name="prenom" id="prenom" placeholder="Prénom" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="pull-left col-md-4">
+              <label class="control-label" for="pwd">Mot de passe</label>
+            </div>
+            <div class="col-md-8 pull-right" ng-class="{ 'has-error': consultantForm.mdpUtilisateur.$invalid && !consultantForm.mdpUtilisateur.$pristine }">
+              <input type="password" ng-model="consultant.mdpUtilisateur" class="form-control" name="pwd" id="pwd" placeholder="Mot de passe" required>
+            </div>
+          </div>
+          
+          
+          <div class="form-group">
+            <div class="pull-left col-md-4">
+              <label class="control-label" for="pwdConfirm">Confirmer mot de passe</label>
+            </div>
+            <div class="col-sm-8 pull-right" ng-class="{ 'has-error': consultantForm.confirmationDePasse.$invalid && !consultantForm.confirmationDePasse.$pristine}">
+              <input type="password" ng-model="consultant.confirmationDePasse" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Confirmer mot de passe" required>
+            </div>
+          </div>
+          
+          
+          <div class="form-group">
+            <label class="col-md-4 pull-left" for="company">Entreprise du consultant</label>
+            <div class="col-sm-8 pull-right" ng-class="{ 'has-error': consultantForm.entrepriseConsultant.$invalid && !consultantForm.entrepriseConsultant.$pristine}">
+              <input type="text" ng-model="consultant.entrepriseConsultant" class="form-control" name="entrepriseConsultant" id="entrepriseConsultant" placeholder="Entreprise du consultant" required>
+            </div>
+          </div>
+          
+          
+          <div class="form-group text-center">
+            <button class="btn btn-primary" ng-click="createConsultant()">Créer</button>
+          </div>
+          <div class="alert alert-success" ng-show="successChanged">
+            <strong>Mise à jour effectuée.</strong>
+          </div>
+          <div class="alert alert-danger" ng-show="errorOccurs">
+            <strong>Erreur lors de la mise à jour : </strong> {{messageErrorInscriptionConsultant}}
+          </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Gérer un compte consultant</div>
+        <div class="panel-body">
+
+          <div>
+            <table class="table table-striped">
+             <thead>
+               <tr>
+                 <th>Consultants</th>
+                 <th>Activer </th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr ng-repeat = "consultant in consultants">
+                 <td>{{consultant.nomUtilisateur}} {{consultant.prenomUtilisateur}}</td>
+                 <td>
+                   <label class="custom-control custom-checkbox">
+                     <input type="checkbox" id="{{consultant.mailUtilisateur}}" ng-change="gererConsultant(consultant.activate, consultant.mailUtilisateur)" ng-model="consultant.activate" class="custom-control-input">
+                      <!-- <span class="custom-control-indicator"></span> -->
+                   </label>
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+          </div>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>

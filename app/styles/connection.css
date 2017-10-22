@@ -1,0 +1,17 @@
+/******** BEGIN Connection page style *********/
+.connectionPage .form-control, .connectionPage .panel-heading  {
+  border-radius: 0;
+}
+.connectionPage .panel.panel-primary  {
+  border-radius: 0;
+  box-shadow: 2px 2px 7px 1px;
+}
+.connectionPage .btn-primary  {
+  border-radius: 0;
+}
+
+.connectionPage h1 {
+    color: #176fc1 !important;
+}
+
+/******** END Connection page style *********/

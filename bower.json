@@ -1,0 +1,48 @@
+{
+  "name": "sig-sip",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.3.0",
+    "bootstrap": "^3.2.0",
+    "angular-animate": "^1.3.0",
+    "angular-cookies": "^1.3.0",
+    "angular-resource": "^1.3.0",
+    "angular-route": "^1.3.0",
+    "angular-sanitize": "^1.3.0",
+    "angular-touch": "^1.3.0",
+    "angular-ui-router": "~0.3.2",
+    "angular-local-storage": "^0.5.2",
+    "angular-recaptcha": "^4.0.3",
+    "angularjs-slider": "^6.0.0",
+    "angular-qrcode": "monospaced/angular-qrcode#^6.2.1",
+    "angular-upload": "^1.0.12",
+    "angular-filter": "^0.5.14",
+    "angular-bootstrap": "^2.5.0",
+    "jspdf": "^1.3.2",
+    "angular-base64": "^2.0.5",
+    "textAngular": "^1.5.16",
+    "ng-csv": "^0.3.6",
+    "angular-toastr": "^2.1.1",
+    "highcharts": "~5.0.7",
+    "angular-chart.js": "~1.1.1",
+    "xlsx-model": "angular-xlsx-model#*",
+    "angular-file-upload": "^2.5.0",
+    "ng-flow": "~2",
+    "angular-base64-upload": "^0.1.19",
+    "angular-bootstrap-switch": "^0.5.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.3.0"
+  },
+  "appPath": "app",
+  "moduleName": "sigSipApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}
